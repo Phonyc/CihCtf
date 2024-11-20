@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /meslogsdeconnexion/LOgS;txt
+Disallow: /meslogsdeconnexion
+Disallow: /meslogsdeconnexion/*
+Disallow: /meslogsdeconnexion/*.txt

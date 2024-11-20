@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "title": "Post random",
+      "content": "Random",
+      "public": true
+    },
+    {
+      "title": "Post random",
+      "content": "Random",
+      "public": true
+    },
+    {
+      "title": "Post random",
+      "content": "Random",
+      "public": true
+    },
+    {
+      "title": "Un super chat",
+      "content": "Mon chat Kevin est trop mignon",
+      "public": true
+    },
+    {
+      "title": "Post random",
+      "content": "Random",
+      "public": true
+    },
+    {
+      "title": "Mdp",
+      "content": "6 premières lettres de mon clavier spécial + nom de mon chat en majuscules + UAI lycée",
+      "public": false
+    },
+    {
+      "title": "Post random",
+      "content": "Random",
+      "public": true
+    }
+  ]
+}

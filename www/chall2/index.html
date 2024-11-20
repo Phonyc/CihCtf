@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+    <a href="/login">Se connecter</a>
+<div>
+    <h1>Posts</h1>
+    <ul>
+    </ul>
+</div>
+<script>
+    let a;
+    fetch("/posts.json").then(response => response.json()).then(data => {
+        let ul = document.querySelector("ul");
+         a = data;
+        data["posts"].forEach(post => {
+            if (post["public"] === true) {
+
+            let li = document.createElement("li");
+            let h2 = document.createElement("h2");
+            h2.textContent = post.title;
+            let p = document.createElement("p");
+            p.textContent = post.content;
+            li.appendChild(h2);
+            li.appendChild(p);
+            ul.appendChild(li);
+            }
+        });
+    });
+</script>
+</body>
+</html>

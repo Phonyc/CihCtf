@@ -1,35 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Posts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="https://cihoche.fr/img/logo.png">
+
+
+    <meta name="robots" content="noindex, follow">
+
+
+    <title>Cih</title>
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <a href="/login">Se connecter</a>
-<div>
-    <h1>Posts</h1>
-    <ul>
-    </ul>
+
+<div id="content">
+    <h1>Informations</h1>
+    <div id="grid">
+    </div>
+
+    <div id="copyright">
+        <p>© 2024 - Cih - All Rights Reserved. - <a href="/login">Se connecter</a></p>
+    </div>
 </div>
 <script>
-    let a;
+
     fetch("/posts.json").then(response => response.json()).then(data => {
-        let ul = document.querySelector("ul");
-         a = data;
+        let grid = document.getElementById("grid");
+
         data["posts"].forEach(post => {
             if (post["public"] === true) {
+                grid.innerHTML += `<div class="card">
+            <h5 class="cardTitle">${post.title}</h5>
+            <div class="cardtText">
+                <p>${post.content}</p>
 
-            let li = document.createElement("li");
-            let h2 = document.createElement("h2");
-            h2.textContent = post.title;
-            let p = document.createElement("p");
-            p.textContent = post.content;
-            li.appendChild(h2);
-            li.appendChild(p);
-            ul.appendChild(li);
+            </div>
+            <div class="showmore">
+
+            </div>
+        </div>`;
+
             }
         });
     });
 </script>
+
 </body>
+
 </html>

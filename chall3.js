@@ -8,6 +8,10 @@ exports.chall3App.get('/robots.txt', (req, res) => {
     res.sendFile(__dirname + '/www/chall3/robots.txt');
 });
 
+exports.chall3App.get('/index.css', (req, res) => {
+    res.sendFile(__dirname + '/www/index.css');
+});
+
 exports.chall3App.get('/meslogsdeconnexion/logs.txt', (req, res) => {
     res.sendFile(__dirname + '/www/chall3/logs.txt');
 });

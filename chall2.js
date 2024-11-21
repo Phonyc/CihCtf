@@ -3,6 +3,11 @@ exports.chall2App = express();
 exports.chall2App.get('/', (req, res) => {
     res.sendFile(__dirname + '/www/chall2/index.html');
 });
+
+exports.chall2App.get('/index.css', (req, res) => {
+    res.sendFile(__dirname + '/www/index.css');
+});
+
 exports.chall2App.get('/posts.json', (req, res) => {
     res.sendFile(__dirname + '/www/chall2/posts.json');
 });

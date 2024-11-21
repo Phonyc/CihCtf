@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: aliceblue;
+}
+
+#content {
+    margin: 0 auto;
+    padding: 15px;
+    max-width: min(1100px, calc(100% - 20px));
+    background: aliceblue;
+}
+h1 {
+    text-align: center;
+    width: 100%;
+    font-size: 3rem;
+}
+
+#grid {
+    margin-top: 30px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, min(250px, 100%));
+    grid-template-rows: repeat(2, 300px);
+    grid-gap: 1rem;
+    padding: 0;
+    box-sizing: border-box;
+    justify-content: center;
+}
+.card {
+    border: solid 1px black;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /*cursor: pointer;*/
+}
+.cardTitle {
+    width: calc(100% - 20px);
+    font-size: 1.75rem;
+
+    text-align: center;
+
+    margin: 20px 10px 0 10px;
+
+}
+.cardtText {
+    width: calc(100% - 20px);
+
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex: 1;
+}
+.showmore::before {
+    content: "";
+    position: absolute;
+    top: -30px; /* Ajustez cette valeur selon vos besoins */
+    left: 0;
+    right: 0;
+    height: 30px; /* Ajustez cette valeur selon vos besoins */
+    background: linear-gradient(to top, aliceblue 10%, transparent);
+}
+.showmore {
+    height: 0;
+    position: relative;
+    border-radius: 0 0 20px 20px;
+}

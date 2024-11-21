@@ -5,6 +5,10 @@ exports.chall1App.get('/', (req, res) => {
     res.sendFile(__dirname + '/www/chall1/index.html');
 });
 
+exports.chall1App.get('/index.css', (req, res) => {
+    res.sendFile(__dirname + '/www/index.css');
+});
+
 exports.chall1App.get('/login', (req, res) => {
     res.sendFile(__dirname + '/www/chall1/login.html');
 });

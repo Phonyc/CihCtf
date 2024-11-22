@@ -2,7 +2,7 @@ const express = require("express");
 exports.chall1App = express();
 
 exports.chall1App.get('/', (req, res) => {
-    res.sendFile(__dirname + '/www/chall1/index.html');
+    res.sendFile(__dirname + '/www/index1_2.html');
 });
 
 exports.chall1App.get('/index.css', (req, res) => {

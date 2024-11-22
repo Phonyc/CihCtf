@@ -2,7 +2,7 @@ const express = require("express");
 
 exports.chall3App = express();
 exports.chall3App.get('/', (req, res) => {
-    res.sendFile(__dirname + '/www/chall3/index.html');
+    res.sendFile(__dirname + '/www/index1_2.html');
 });
 exports.chall3App.get('/robots.txt', (req, res) => {
     res.sendFile(__dirname + '/www/chall3/robots.txt');

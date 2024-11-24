@@ -24,3 +24,13 @@ exports.chall4App.get('/file', (req, res) => {
         }
     });
 });
+
+exports.chall4App.post('/login.html', (req, res) => {
+    // Get and verify creds
+    const {username, password} = req.body;
+    if (username === process.env.UNAME4 && password === process.env.PW4) {
+        res.send(process.env.FLAG4);
+    } else {
+        res.status(403).send('Login failed')
+    }
+});

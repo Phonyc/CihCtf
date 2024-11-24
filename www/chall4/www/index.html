@@ -1,11 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Posts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="https://cihoche.fr/img/logo.png">
+
+
+    <meta name="robots" content="noindex, follow">
+
+
+    <title>Cih</title>
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <a href="/login">Connexion</a>
-<!-- TODO créer un site crédible qui utilise la requete -->
+
+<div id="content">
+    <h1>Recettes</h1>
+    <div id="grid">
+    </div>
+
+    <div id="copyright">
+        <p>© 2024 - Cih - All Rights Reserved. - <a href="/login.html">Se connecter</a></p>
+    </div>
+</div>
+<script>
+
+    fetch("/file?path=posts.json").then(response => response.json()).then(data => {
+        let grid = document.getElementById("grid");
+
+        data["posts"].forEach(post => {
+            if (post["public"] === true) {
+                grid.innerHTML += `<div class="card">
+            <h5 class="cardTitle">${post.title}</h5>
+            <div class="cardtText">
+                <p>${post.content}</p>
+
+            </div>
+            <div class="showmore">
+
+            </div>
+        </div>`;
+
+            }
+        });
+    });
+</script>
+
 </body>
+
 </html>

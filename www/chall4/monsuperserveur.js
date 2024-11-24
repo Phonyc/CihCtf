@@ -20,7 +20,7 @@ app.post('/login', (req, res) => {
     // Get and verify creds
     const {username, password} = req.body;
     if (username === 'monsuperadmin' && password === "mon#super!mot/de^passe)plus=que&trop-bien{sécurisé|") {
-        res.send("Bonjour");
+        res.send("Bienvenue sur la page Admin !");
     } else {
         res.status(403).send('Login failed')
     }

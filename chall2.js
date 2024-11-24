@@ -13,7 +13,7 @@ exports.chall2App.get('/posts.json', (req, res) => {
 });
 
 exports.chall2App.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/www/chall2/login.html');
+    res.sendFile(__dirname + '/www/login.html');
 });
 exports.chall2App.post('/login', (req, res) => {
     // Get and verify creds

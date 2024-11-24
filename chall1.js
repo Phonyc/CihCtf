@@ -10,7 +10,7 @@ exports.chall1App.get('/index.css', (req, res) => {
 });
 
 exports.chall1App.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/www/chall1/login.html');
+    res.sendFile(__dirname + '/www/login.html');
 });
 
 exports.chall1App.post('/login', (req, res) => {

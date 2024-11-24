@@ -17,7 +17,7 @@ exports.chall3App.get('/meslogsdeconnexion/logs.txt', (req, res) => {
 });
 
 exports.chall3App.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/www/chall3/login.html');
+    res.sendFile(__dirname + '/www/login.html');
 });
 exports.chall3App.post('/login', (req, res) => {
     // Get and verify creds

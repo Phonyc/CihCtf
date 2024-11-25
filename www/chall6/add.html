@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chall 6</title>
+</head>
+<body>
+<h1>Demande d'ajout d'une recette</h1>
+<form action="/preview" method="get" onsubmit="addDateToForm(event)">
+    <label> Votre nom :
+        <input type="text" name="name" placeholder="Name">
+    </label><br><br>
+    <label>
+        Votre demande :
+        <input type="text" name="message" placeholder="Message">
+    </label>
+    <input type="hidden" name="objet" value="null">
+    <input type="hidden" name="footer" value="null">
+    <input type="hidden" name="header" value="null">
+    <input type="hidden" name="date" id="dateInput"><br><br>
+    <input type="submit" value="Envoyer">
+</form>
+<script>
+    function addDateToForm(event) {
+        const dateInput = document.getElementById('dateInput');
+        dateInput.value = new Date().toISOString();
+    }
+</script>
+</body>
+</html>

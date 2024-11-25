@@ -31,7 +31,8 @@ exports.chall6App.get('/preview', (req, res) => {
 
     // Display the message
     res.send(`
-        <html>
+        <!DOCTYPE html>
+        <html lang="fr">
         <body>
             <h1>Confirmer avant d'envoyer</h1>
             <p><strong>Message de:</strong> ${sanitizedName}</p>

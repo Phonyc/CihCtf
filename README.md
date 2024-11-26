@@ -29,6 +29,11 @@ Fichier de log accessible a tous (trouver l'url avec le robots.txt)
 Dedans, historique de connexions manquées (avec mdp essayé, ...)
 On peut y trouver le mdp tapé avec Verr Maj Activé
 ```
+**Indication:**
+
+```
+UltraSpeedPapy on your keyboard
+```
 
 ## Chall 4
 

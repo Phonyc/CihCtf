@@ -7,7 +7,7 @@ function isAdmin(req) {
 }
 
 function fax(token, key, seed) {
-    return Number(parseInt(token, 2) ^ (parseInt(key, 2) + parseInt(fibonacci(seed).toString().charAt(3) + fibonacci(seed).toString().charAt(6)) + 16)).toString(2);
+    return BigInt(BigInt(parseInt(token, 2)) ^ BigInt((parseInt(key, 2) +  parseInt(fibonacci(seed).toString().charAt(3) + fibonacci(seed).toString().charAt(6)) + 16))).toString(2);
 }
 
 
@@ -21,7 +21,7 @@ router.get('/token/fax', (req, res) => {
     if (isAdmin(req)) {
         let result = fax(token, process.env.CHALL10KEY, getSeed()).toString()
         changeSeed();
-        res.send("Envoyé & parsé :" + parseInt(token, 2).toString(2) + "#" + result + '### La seed vient d\'être changée');
+        res.send("Envoyé & parsé :" + BigInt(parseInt(token, 2)).toString(2) + " | Result :" + result + ' | La seed vient d\'être changée');
     } else {
         res.status(403)
     }
@@ -38,10 +38,15 @@ router.get('/verify/token', (req, res) => {
 
 router.post('/verify', (req, res) => {
     if (isAdmin(req)) {
+        console.log(getActualToken());
+        console.log(fax(getActualToken(), process.env.CHALL10KEY, getSeed()).toString());
+        console.log(req.body["result"]);
         if (fax(getActualToken(), process.env.CHALL10KEY, getSeed()).toString() === req.body["result"]) {
             res.send(process.env.FLAG10);
+        } else {
+
+            res.send("Wrong result");
         }
-        res.send("Wrong result");
     } else {
         res.status(403)
     }

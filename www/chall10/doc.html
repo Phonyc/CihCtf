@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="https://cihoche.fr/img/logo.png">
+
+
+    <meta name="robots" content="noindex, follow">
+
+
+    <title>Cih</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<div id="content">
+    <p>
+        Doc à finir
+    </p>
+    <p>J'ai inventé ma super fonction, le fax, il permet de vérifier que quelqu'un possède la bonne clé !</p>
+    <div id="copyright">
+        <p>© 2024 - Cih - All Rights Reserved.</p>
+    </div>
+</div>
+<script>
+    function sendPost() {
+        fetch('/admin/verify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: 'result=' + fax('01010101010', '01010101010', 10)
+        })
+    }
+
+    function sendGet() {
+        fetch('/admin/verify/token');
+    }
+
+    function getfaxed(token) {
+        fetch('/admin/token/fax?token=' + token);
+    }
+
+    function fax(token, key, seed) {
+        return Number(parseInt(token, 2) ^ (parseInt(key, 2) + parseInt(fibonacci(seed).toString().charAt(3) + fibonacci(seed).toString().charAt(6)) + 16)).toString(2);
+    }
+
+</script>
+</body>
+
+
+</html>

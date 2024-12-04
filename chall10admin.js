@@ -58,6 +58,14 @@ router.get('/doc', (req, res) => {
     }
 });
 
+router.get('/', (req, res) => {
+    if (isAdmin(req)) {
+        res.redirect('/administration/doc');
+    } else {
+        res.status(403).send("Forbidden");
+    }
+});
+
 router.get('/index.css', (req, res) => {
     res.sendFile(__dirname + '/www/index.css');
 });

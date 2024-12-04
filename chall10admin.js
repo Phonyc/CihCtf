@@ -2,12 +2,11 @@ let {getSeed, getActualToken, changeSeed} = require("./chall10commun");
 const router = require("express").Router()
 
 function isAdmin(req) {
-    // return req.cookies.sessionId === process.env.CHALL10ADMIN_COOKIE;
-    return true;
+    return req.cookies.sessionId === process.env.CHALL10ADMIN_COOKIE;
 }
 
 function fax(token, key, seed) {
-    return BigInt(BigInt(parseInt(token, 2)) ^ BigInt((parseInt(key, 2) +  parseInt(fibonacci(seed).toString().charAt(3) + fibonacci(seed).toString().charAt(6)) + 16))).toString(2);
+    return BigInt(BigInt(parseInt(token, 2)) ^ BigInt((parseInt(key, 2) + parseInt(fibonacci(seed).toString().charAt(3) + fibonacci(seed).toString().charAt(6)) + 16))).toString(2);
 }
 
 
@@ -23,16 +22,15 @@ router.get('/token/fax', (req, res) => {
         changeSeed();
         res.send("Envoyé & parsé :" + BigInt(parseInt(token, 2)).toString(2) + " | Result :" + result + ' | La seed vient d\'être changée');
     } else {
-        res.status(403)
+        res.status(403).send("Forbidden");
     }
 });
 
 router.get('/verify/token', (req, res) => {
-
     if (isAdmin(req)) {
         res.send(getActualToken());
     } else {
-        res.status(403)
+        res.status(403).send("Forbidden");
     }
 });
 
@@ -56,7 +54,7 @@ router.get('/doc', (req, res) => {
     if (isAdmin(req)) {
         res.sendFile(__dirname + '/www/chall10/doc.html');
     } else {
-        res.status(403)
+        res.status(403).send("Forbidden");
     }
 });
 

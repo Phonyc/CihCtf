@@ -1,4 +1,7 @@
 import requests
+import os
+import dotenv
+dotenv.load_dotenv()
 host = "http://127.0.0.10:3000"
 
 def getseed():
@@ -6,7 +9,8 @@ def getseed():
     return r.text.split("#")[0]
 
 def getfaxed(tokenin):
-    r = requests.get(host + '/admin/token/fax?token=' + tokenin)
+    r = requests.get(host + '/admin/token/fax?token=' + tokenin,
+                     headers={"Cookie": "sessionId=" + os.getenv("CHALL10ADMIN_COOKIE")})
     return r.text.split(':')[2].split(' |')[0]
 
 def fibonacci(n):
@@ -40,10 +44,12 @@ def fax(token, key, seed):
     return str(bin(token ^ (key + salt)))[2:]
 
 def auth(key):
+    print("start")
     r = requests.get(host + '/admin/verify/token')
-
     # print(fax(int(r.text, 2), key, int(getseed())))
     r2 = requests.post(host + '/admin/verify', data={'result': fax(int(r.text, 2), key, int(getseed()))})
-    # print(r2.text)
+    print(r2.text)
 
+print(getfaxed("111111011111101111111"))
 auth(findkey())
+# get()

@@ -2,12 +2,27 @@ const express = require("express");
 
 exports.chall5App = express();
 // TODO Créer la capture réseau
-// exports.chall5App.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/www/chall5/netcap');
-// });
+
+exports.chall5App.get('/cap.pcap', (req, res) => {
+    res.sendFile(__dirname + '/www/chall5/cap.pcap');
+});
+
+exports.chall5App.get('/robots.txt', (req, res) => {
+    res.redirect("/cap.pcap");
+});
+
+exports.chall5App.get('/', (req, res) => {
+    res.sendFile(__dirname + '/www/index1_2.html');
+});
+
+exports.chall5App.get('/index.css', (req, res) => {
+    res.sendFile(__dirname + '/www/index.css');
+});
+
 exports.chall5App.get('/login', (req, res) => {
     res.sendFile(__dirname + '/www/login.html');
 });
+
 exports.chall5App.post('/login', (req, res) => {
     // Get and verify creds
     const {username, password} = req.body;

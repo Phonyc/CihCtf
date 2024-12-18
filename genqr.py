@@ -41,7 +41,8 @@ img_2.save("mid2out.png")
 img = cv2.imread('mid2out.png')
 jpg_img = cv2.imencode('.png', img)
 b64_string = base64.b64encode(jpg_img[1]).decode('utf-8')
-b64_url = "data:image/png;base64," + b64_string
+# b64_url = "data:image/png;base64," + b64_string
+b64_url = "Rp“Ð)T#2[/png.Ëb-5·," + b64_string
 
 # print(b64_url)
 with open("www/chall11/file.txt", "w") as writer:

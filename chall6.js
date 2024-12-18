@@ -52,8 +52,7 @@ exports.chall6App.get('/send-message', (req, res) => {
     res.send('Le message à bien été envoyé, nous allons vous répondre sous peu !');
 });
 
-// TODO Complexifier l'url
-exports.chall6App.get('/admin/messages', (req, res) => {
+exports.chall6App.get('/admin/messages25a35023cf2b6e64fe21b9e19cc536157f9bb2dae54d6eec640c7bcc4f5cf458', (req, res) => {
     let messageList = messages.map(msg => `<li>${msg}</li>`).join('');
     res.cookie('session', process.env.FLAG6, { maxAge: 90000, httpOnly: false });
     res.send(`

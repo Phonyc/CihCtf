@@ -1,7 +1,6 @@
 const express = require("express");
 
 exports.chall5App = express();
-// TODO Créer la capture réseau
 
 exports.chall5App.get('/cap.pcap', (req, res) => {
     res.sendFile(__dirname + '/www/chall5/cap.pcap');

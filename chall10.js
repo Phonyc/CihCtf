@@ -54,8 +54,8 @@ exports.chall10App.get('/send-message', (req, res) => {
     res.send('Le message à bien été envoyé, nous allons vous répondre sous peu !');
 });
 
-// TODO Complexifier l'url
-exports.chall10App.get('/viewmessages', (req, res) => {
+
+exports.chall10App.get('/viewmessages25a35023cf2b6e64fe21b9e19cc536157f9bb2dae54d6eec640c7bcc4f5cf458', (req, res) => {
     let messageList = messages.map(msg => `<li>${msg}</li>`).join('');
     res.cookie('sessionId', process.env.CHALL10ADMIN_COOKIE, {maxAge: 90000, httpOnly: false});
     res.send(`

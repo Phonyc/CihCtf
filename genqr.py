@@ -16,8 +16,8 @@ qr.add_data(os.getenv('FLAG11'))
 qr.make(fit=True)
 
 img = qr.make_image(fill_color="black", back_color="white")
-#img.show()
-img.save("mid1out.png") 
+
+img.save("mid1out.png")
 
 img = cv2.imread('mid1out.png')
 jpg_img = cv2.imencode('.png', img)
@@ -36,7 +36,7 @@ qr2.add_data(b64_url)
 qr2.make(fit=True)
 
 img_2 = qr2.make_image(fill_color="black", back_color="white")
-#img_2.show()
+
 img_2.save("mid2out.png")
 img = cv2.imread('mid2out.png')
 jpg_img = cv2.imencode('.png', img)
@@ -44,7 +44,8 @@ b64_string = base64.b64encode(jpg_img[1]).decode('utf-8')
 # b64_url = "data:image/png;base64," + b64_string
 b64_url = "Rp“Ð)T#2[/png.Ëb-5·," + b64_string
 
-# print(b64_url)
+os.remove("mid1out.png")
+os.remove("mid2out.png")
+
 with open("www/chall11/file.txt", "w") as writer:
     writer.write(b64_url)
-

@@ -105,7 +105,7 @@ def generate_log(initdate, ct):
     action_template = get_random_element(actions)
     if ct == 3245:
         secdate = initdate + datetime.timedelta(seconds=random.randint(41, 123))
-        return f"{initdate.isoformat()} - Failed login: rOOt - {os.getenv('PW3')}\n{secdate.isoformat()} - Successful login: RooT"
+        return f"{initdate.isoformat()} - Failed login: rOOt - {os.getenv('PW3_SH')}\n{secdate.isoformat()} - Successful login: RooT"
     elif ct == 0:
         return f"{initdate.isoformat()} - Server started successfully !"
     else:

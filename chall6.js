@@ -47,7 +47,7 @@ exports.chall6App.get('/preview', (req, res) => {
 // Route to submit a message
 exports.chall6App.get('/send-message', (req, res) => {
     const {name, message, date} = req.query;
-    const sanitizedMessage = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const sanitizedMessage = message.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace("alert", "").replace("ALERT", "");
     messages.push(date + ' : ' + name + ' A écrit : ' + sanitizedMessage);
     res.send('Le message à bien été envoyé, nous allons vous répondre sous peu !');
 });

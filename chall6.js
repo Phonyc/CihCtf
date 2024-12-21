@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const {Builder} = require('selenium-webdriver');
 
 const firefox = require("selenium-webdriver/firefox");
+const {join} = require("node:path");
 
 async function runSeleniumScript(url) {
     let options = new firefox.Options();
@@ -16,9 +17,11 @@ async function runSeleniumScript(url) {
     options.addArguments('--disable-dev-shm-usage');
     options.addArguments("--disable-popup-blocking");
     options.addArguments("disable-notifications");
+    let service = new firefox.ServiceBuilder(join('/usr/local/bin', 'geckodriver')).build();
     let driver = await new Builder()
         .forBrowser('firefox')
         .setFirefoxOptions(options)
+        .setFirefoxService(service)
         .build();
 
     await driver.get(`http://chall6.${process.env.DOMAIN}/admin/messages25a35023cf2b6e64fe21b9e19cc536157f9bb2dae54d6eec640c7bcc4f5cf458`);

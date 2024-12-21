@@ -3,30 +3,43 @@ exports.chall10App = express();
 let {changeSeed, getSeedEmission, getSeed} = require('./chall10commun');
 const firefox = require("selenium-webdriver/firefox");
 const {Builder} = require("selenium-webdriver");
+const {join} = require("node:path");
 exports.chall10App.use("/administration", require("./chall10admin"))
 
 setInterval(changeSeed, 5000);
 
-async function runSeleniumScript(cookie, url) {
-    let options = new firefox.Options();
 
-    options.addArguments('--headless'); // Remove this line if you want to see the browser
-    options.addArguments('--no-sandbox');
-    options.addArguments('--disable-gpu');
+async function runSeleniumScript(url) {
+    try {
+        let options = new firefox.Options();
 
-    options.addArguments("-disable-infobars");
-    options.addArguments('--disable-dev-shm-usage');
-    options.addArguments("--disable-popup-blocking");
-    options.addArguments("disable-notifications");
-    let driver = await new Builder()
-        .forBrowser('firefox')
-        .setFirefoxOptions(options)
-        .build();
+        options.addArguments('--headless'); // Remove this line if you want to see the browser
+        options.addArguments('--no-sandbox');
+        options.addArguments('--disable-gpu');
 
-    await driver.get(`http://chall6.${process.env.DOMAIN}/messages25a35023cf2b6e64fe21b9e19cc536157f9bb2dae54d6eec640c7bcc4f5cf458`);
-    await driver.get(`http://chall6.${process.env.DOMAIN}` + url);
-    await driver.sleep(1500);
-    await driver.quit();
+        options.addArguments("-disable-infobars");
+        options.addArguments('--disable-dev-shm-usage');
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("disable-notifications");
+        let service = new firefox.ServiceBuilder(join('/usr/local/bin', 'geckodriver'));
+        let driver = await new Builder()
+            .forBrowser('firefox')
+            .setFirefoxOptions(options)
+            .setFirefoxService(service)
+            .build();
+
+        await driver.get(`http://chall10.${process.env.DOMAIN}/messages25a35023cf2b6e64fe21b9e19cc536157f9bb2dae54d6eec640c7bcc4f5cf458`);
+        await driver.get(`http://chall10.${process.env.DOMAIN}` + url);
+        await driver.sleep(1500);
+        await driver.quit();
+    } catch (e) {
+        console.log(e);
+        try {
+            await driver.quit();
+        } catch (e) {
+
+        }
+    }
 }
 
 

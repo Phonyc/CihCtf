@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 seleniarm/standalone-chrome:latest
+FROM --platform=arm64 selenium/standalone-chromium
 LABEL authors="Phonyc"
 
 # Set the working directory

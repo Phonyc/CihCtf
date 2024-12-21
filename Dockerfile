@@ -8,7 +8,9 @@ WORKDIR /app
 COPY . /app
 
 # Install Node.js dependencies
-RUN apt-get update && apt-get install -y nodejs npm
+RUN apt-get update
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
 RUN npm install
 
 # Expose the application port

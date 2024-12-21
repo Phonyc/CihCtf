@@ -12,6 +12,8 @@ async function runSeleniumScript(cookie, url) {
 
     options.addArguments('--headless'); // Remove this line if you want to see the browser
     options.addArguments('--no-sandbox');
+    options.addArguments('--disable-gpu');
+
     options.addArguments("-disable-infobars");
     options.addArguments('--disable-dev-shm-usage');
     options.addArguments("--disable-popup-blocking");

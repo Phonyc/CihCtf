@@ -7,7 +7,7 @@ COPY package*.json /app
 RUN npm install
 RUN npm install chromedriver
 
-RUN apt-get update && apt-get install -y \
+RUN sudo apt-get update && sudo apt-get install -y \
     wget \
     unzip \
     chromium-browser \

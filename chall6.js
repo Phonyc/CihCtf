@@ -3,20 +3,22 @@ const bodyParser = require('body-parser');
 
 const {Builder} = require('selenium-webdriver');
 
-const chrome = require('selenium-webdriver/chrome');
+const firefox = require("selenium-webdriver/firefox");
 
 async function runSeleniumScript(url) {
-    let options = new chrome.Options();
+    let options = new firefox.Options();
 
     options.addArguments('--headless'); // Remove this line if you want to see the browser
     options.addArguments('--no-sandbox');
+    options.addArguments('--disable-gpu');
+
     options.addArguments("-disable-infobars");
     options.addArguments('--disable-dev-shm-usage');
     options.addArguments("--disable-popup-blocking");
     options.addArguments("disable-notifications");
     let driver = await new Builder()
-        .forBrowser('chrome')
-        .setChromeOptions(options)
+        .forBrowser('firefox')
+        .setFirefoxOptions(options)
         .build();
 
     await driver.get(`http://chall6.${process.env.DOMAIN}/admin/messages25a35023cf2b6e64fe21b9e19cc536157f9bb2dae54d6eec640c7bcc4f5cf458`);

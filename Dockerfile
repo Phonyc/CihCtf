@@ -5,20 +5,16 @@ WORKDIR /app
 
 COPY package*.json /app
 RUN npm install
-RUN npm install chromedriver
-
-RUN sudo apt-get update && sudo apt-get install -y \
+RUN apt-get update && apt-get install -y \
     wget \
+    gnupg \
     unzip \
-    chromium-browser \
+    firefox-esr \
+    && wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux-aarch64.tar.gz \
+    && tar -xzf /tmp/geckodriver.tar.gz -C /usr/local/bin/ \
+    && rm /tmp/geckodriver.tar.gz \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-# Install ChromeDriver
-RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` \
-    && wget -q "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" \
-    && unzip chromedriver_linux64.zip \
-    && mv chromedriver /usr/local/bin/ \
-    && rm chromedriver_linux64.zip
 
 COPY . /app
 

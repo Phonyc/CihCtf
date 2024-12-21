@@ -1,14 +1,14 @@
 const express = require("express");
 exports.chall10App = express();
 let {changeSeed, getSeedEmission, getSeed} = require('./chall10commun');
-const chrome = require("selenium-webdriver/chrome");
+const firefox = require("selenium-webdriver/firefox");
 const {Builder} = require("selenium-webdriver");
 exports.chall10App.use("/administration", require("./chall10admin"))
 
 setInterval(changeSeed, 5000);
 
 async function runSeleniumScript(cookie, url) {
-    let options = new chrome.Options();
+    let options = new firefox.Options();
 
     options.addArguments('--headless'); // Remove this line if you want to see the browser
     options.addArguments('--no-sandbox');
@@ -19,8 +19,8 @@ async function runSeleniumScript(cookie, url) {
     options.addArguments("--disable-popup-blocking");
     options.addArguments("disable-notifications");
     let driver = await new Builder()
-        .forBrowser('chrome')
-        .setChromeOptions(options)
+        .forBrowser('firefox')
+        .setFirefoxOptions(options)
         .build();
 
     await driver.get(`http://chall6.${process.env.DOMAIN}/messages25a35023cf2b6e64fe21b9e19cc536157f9bb2dae54d6eec640c7bcc4f5cf458`);
